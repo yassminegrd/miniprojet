@@ -1,0 +1,97 @@
+/* Section Transition Styles */
+.container {
+  position: relative;
+  overflow: hidden;
+  color: hsl(var(--background));
+}
+
+/* SVG Elements */
+.svgWave {
+  width: 100%;
+  height: 5rem;
+}
+
+@media (min-width: 768px) {
+  .svgWave {
+    height: 8rem;
+  }
+}
+
+.svgDiagonal {
+  width: 100%;
+  height: 4rem;
+}
+
+@media (min-width: 768px) {
+  .svgDiagonal {
+    height: 6rem;
+  }
+}
+
+.svgCurve {
+  width: 100%;
+  height: 5rem;
+}
+
+@media (min-width: 768px) {
+  .svgCurve {
+    height: 8rem;
+  }
+}
+
+.svgZigzag {
+  width: 100%;
+  height: 2rem;
+}
+
+@media (min-width: 768px) {
+  .svgZigzag {
+    height: 4rem;
+  }
+}
+
+.flip {
+  transform: rotate(180deg);
+}
+
+/* Path Animation */
+.path {
+  transition: opacity 1s ease-out;
+}
+
+.path.hidden {
+  opacity: 0;
+}
+
+.path.visible {
+  opacity: 1;
+}
+
+/* Gradient Variant */
+.gradientContainer {
+  width: 100%;
+  height: 8rem;
+  transition: opacity 1s ease-out;
+}
+
+@media (min-width: 768px) {
+  .gradientContainer {
+    height: 12rem;
+  }
+}
+
+.gradientContainer.hidden {
+  opacity: 0;
+}
+
+.gradientContainer.visible {
+  opacity: 1;
+}
+
+.gradientToBottom {
+  background: linear-gradient(to bottom, currentColor, transparent);
+}
+
+.gradientToTop {
+  background: linear-gradient(to bottom, transparent, currentColor);
+}

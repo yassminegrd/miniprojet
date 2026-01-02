@@ -1,0 +1,665 @@
+/* Hero Section Styles */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Background */
+.backgroundContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: transform 0.3s ease-out;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.gradientOverlayHorizontal {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, hsl(var(--background)), hsl(var(--background) / 0.9), hsl(var(--background) / 0.7));
+}
+
+.gradientOverlayVertical {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, hsl(var(--background)), transparent, hsl(var(--background) / 0.5));
+}
+
+/* Animated Lines */
+.linesContainer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.horizontalLine {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, hsl(var(--primary) / 0.3), transparent);
+  animation: pulseSlow 4s ease-in-out infinite;
+}
+
+.horizontalLine:nth-child(1) { top: 20%; }
+.horizontalLine:nth-child(2) { top: 40%; animation-delay: 1s; background: linear-gradient(to right, transparent, hsl(var(--primary) / 0.2), transparent); }
+.horizontalLine:nth-child(3) { top: 60%; animation-delay: 2s; }
+.horizontalLine:nth-child(4) { top: 80%; animation-delay: 3s; background: linear-gradient(to right, transparent, hsl(var(--primary) / 0.2), transparent); }
+
+.verticalLine {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, hsl(var(--primary) / 0.1), transparent);
+}
+
+.verticalLine:nth-child(5) { left: 10%; }
+.verticalLine:nth-child(6) { left: 30%; opacity: 0.5; }
+.verticalLine:nth-child(7) { right: 20%; }
+
+/* Floating Icons */
+.floatingIcon {
+  position: absolute;
+  opacity: 0.2;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floatingIcon.topLeft {
+  top: 25%;
+  left: 5%;
+}
+
+.floatingIcon.bottomLeft {
+  bottom: 33%;
+  left: 15%;
+  animation-delay: 2s;
+}
+
+.floatingIcon.topRight {
+  top: 33%;
+  right: 5%;
+  animation-delay: 1s;
+}
+
+/* Content Container */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+  }
+}
+
+/* Left Content */
+.leftContent {
+  order: 2;
+}
+
+@media (min-width: 1024px) {
+  .leftContent {
+    order: 1;
+  }
+}
+
+.sectionNumber {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  transition: all 1s ease;
+}
+
+.sectionNumber.hidden {
+  opacity: 0;
+  transform: translateX(-2rem);
+}
+
+.sectionNumber.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.numberText {
+  font-size: 4.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: hsl(var(--primary) / 0.1);
+}
+
+@media (min-width: 768px) {
+  .numberText {
+    font-size: 6rem;
+  }
+}
+
+.numberLine {
+  height: 1px;
+  flex: 1;
+  max-width: 100px;
+  background: linear-gradient(to right, hsl(var(--primary) / 0.5), transparent);
+}
+
+/* Main Content */
+.mainContent {
+  transition: all 1s ease 0.1s;
+}
+
+.mainContent.hidden {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.mainContent.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.subtitle {
+  color: hsl(var(--primary));
+  font-family: monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 3rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.95;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .title { font-size: 3.75rem; }
+}
+
+@media (min-width: 768px) {
+  .title { font-size: 4.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .title { font-size: 6rem; }
+}
+
+.titleText {
+  color: hsl(var(--foreground));
+}
+
+.titleHighlight {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px hsl(var(--primary) / 0.3);
+}
+
+.roleContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.roleLine {
+  width: 3rem;
+  height: 0.25rem;
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.3));
+  border-radius: 9999px;
+}
+
+.role {
+  font-size: 1.25rem;
+  font-family: var(--font-display);
+  color: hsl(var(--muted-foreground));
+}
+
+@media (min-width: 768px) {
+  .role { font-size: 1.5rem; }
+}
+
+.roleHighlight {
+  color: hsl(var(--primary));
+}
+
+.description {
+  font-size: 1.125rem;
+  color: hsl(var(--muted-foreground));
+  max-width: 32rem;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+/* CTA Buttons */
+.ctaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  transition: all 1s ease 0.3s;
+}
+
+@media (min-width: 640px) {
+  .ctaContainer {
+    flex-direction: row;
+  }
+}
+
+.ctaContainer.hidden {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.ctaContainer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stats */
+.statsContainer {
+  display: flex;
+  gap: 2rem;
+  transition: all 1s ease 0.4s;
+}
+
+.statsContainer.hidden {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.statsContainer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statValue {
+  font-size: 1.875rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (min-width: 768px) {
+  .statValue { font-size: 2.25rem; }
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.25rem;
+}
+
+/* Right Content - Photo */
+.rightContent {
+  order: 1;
+  position: relative;
+  transition: all 1s ease 0.2s;
+}
+
+@media (min-width: 1024px) {
+  .rightContent {
+    order: 2;
+  }
+}
+
+.rightContent.hidden {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.rightContent.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.photoContainer {
+  position: relative;
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .photoContainer {
+    max-width: none;
+  }
+}
+
+.decorativeFrame {
+  position: absolute;
+  inset: -1rem;
+  border: 1px solid hsl(var(--primary) / 0.2);
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease-out;
+}
+
+.decorativeFrameOuter {
+  position: absolute;
+  inset: -2rem;
+  border: 1px solid hsl(var(--primary) / 0.1);
+  border-radius: 0.5rem;
+  display: none;
+  transition: transform 0.3s ease-out;
+}
+
+@media (min-width: 768px) {
+  .decorativeFrameOuter {
+    display: block;
+  }
+}
+
+.photoWrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  aspect-ratio: 4/5;
+}
+
+@media (min-width: 1024px) {
+  .photoWrapper {
+    aspect-ratio: 3/4;
+  }
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease-out;
+}
+
+.photoOverlayBottom {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, hsl(var(--background)), transparent, transparent);
+  opacity: 0.6;
+}
+
+.photoOverlayLeft {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, hsl(var(--background) / 0.5), transparent, transparent);
+}
+
+.photoOverlayGold {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top right, hsl(var(--primary) / 0.1), transparent, hsl(var(--primary) / 0.05));
+}
+
+/* Floating Badges */
+.badge {
+  position: absolute;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--primary) / 0.2);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 10px 25px -5px hsl(var(--background) / 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.badgeStatus {
+  bottom: -1rem;
+  left: -1rem;
+}
+
+@media (min-width: 768px) {
+  .badgeStatus {
+    left: -2rem;
+  }
+}
+
+.badgeStatusContent {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.statusDot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: #22c55e;
+  animation: pulse 2s infinite;
+}
+
+.statusText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+}
+
+.badgeTech {
+  top: -1rem;
+  right: -1rem;
+}
+
+@media (min-width: 768px) {
+  .badgeTech {
+    right: -2rem;
+  }
+}
+
+.badgeTechContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.techIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: hsl(var(--primary));
+}
+
+.techText {
+  font-size: 0.875rem;
+  font-family: monospace;
+  color: hsl(var(--primary));
+}
+
+/* Social Links - Fixed Left */
+.socialLinks {
+  position: fixed;
+  left: 1.5rem;
+  bottom: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 20;
+  transition: all 1s ease 0.5s;
+}
+
+@media (min-width: 1024px) {
+  .socialLinks {
+    display: flex;
+  }
+}
+
+.socialLinks.hidden {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.socialLinks.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.socialLink {
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+  transform: translateY(-0.25rem);
+}
+
+.socialIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: hsl(var(--muted-foreground));
+  transition: color 0.3s ease;
+}
+
+.socialLink:hover .socialIcon {
+  color: hsl(var(--primary));
+}
+
+.socialLine {
+  width: 1px;
+  height: 6rem;
+  background: linear-gradient(to bottom, hsl(var(--primary) / 0.5), transparent);
+}
+
+/* Scroll Indicator - Fixed Right */
+.scrollIndicator {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 20;
+  transition: all 1s ease 0.5s;
+}
+
+@media (min-width: 1024px) {
+  .scrollIndicator {
+    display: flex;
+  }
+}
+
+.scrollIndicator.hidden {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.scrollIndicator.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scrollText {
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  writing-mode: vertical-rl;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 6rem;
+  background: linear-gradient(to bottom, hsl(var(--primary) / 0.5), transparent);
+  position: relative;
+}
+
+.scrollDot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.25rem;
+  height: 1rem;
+  background: hsl(var(--primary));
+  border-radius: 9999px;
+  animation: bounce 1s infinite;
+}
+
+/* Mobile Scroll Button */
+.mobileScrollButton {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: hsl(var(--muted-foreground));
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .mobileScrollButton {
+    display: none;
+  }
+}
+
+.mobileScrollButton:hover {
+  color: hsl(var(--primary));
+}
+
+.mobileScrollText {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.mobileScrollIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  animation: bounce 1s infinite;
+}
+
+/* Animations */
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.1); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) translateX(-50%); }
+  50% { transform: translateY(10px) translateX(-50%); }
+}

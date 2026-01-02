@@ -1,0 +1,53 @@
+/* Footer Styles */
+.footer {
+  padding: 2rem 0;
+  border-top: 1px solid hsl(var(--border));
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .content {
+    flex-direction: row;
+  }
+}
+
+.copyright {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+}
+
+.name {
+  font-weight: 600;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.madeWith {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.heartIcon {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: hsl(var(--primary));
+  fill: hsl(var(--primary));
+}

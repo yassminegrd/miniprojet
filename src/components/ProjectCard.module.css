@@ -1,0 +1,293 @@
+/* Project Card Styles */
+.card {
+  position: relative;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  overflow: hidden;
+  animation: slideUp 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Image Section */
+.imageContainer {
+  position: relative;
+  height: 12rem;
+  overflow: hidden;
+}
+
+.imagePlaceholder {
+  position: absolute;
+  inset: 0;
+  background: hsl(var(--card));
+  transition: opacity 0.5s ease;
+}
+
+.imagePlaceholder.loaded {
+  opacity: 0;
+}
+
+.imagePlaceholderInner {
+  width: 100%;
+  height: 100%;
+  animation: pulse 2s infinite;
+  background: hsl(var(--secondary));
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.1);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, hsl(var(--card)), hsl(var(--card) / 0.5), transparent);
+}
+
+/* Lab Number Badge */
+.labNumberContainer {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.labNumber {
+  font-size: 3.75rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: hsl(var(--primary) / 0.2);
+}
+
+/* Floating Tag */
+.tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: hsl(var(--primary) / 0.9);
+  color: hsl(var(--primary-foreground));
+  font-size: 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+/* Content Section */
+.content {
+  padding: 1.5rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.card:hover .title {
+  color: hsl(var(--primary));
+}
+
+.description {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  line-height: 1.625;
+  margin-bottom: 1rem;
+}
+
+/* Expandable Section */
+.expandableSection {
+  overflow: hidden;
+  transition: all 0.5s ease;
+  max-height: 0;
+  opacity: 0;
+}
+
+.expandableSection.expanded {
+  max-height: 600px;
+  opacity: 1;
+}
+
+/* Detail Box */
+.detailBox {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: hsl(var(--secondary) / 0.5);
+  border: 1px solid hsl(var(--border));
+}
+
+.detailHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.detailIcon {
+  width: 1rem;
+  height: 1rem;
+  color: hsl(var(--primary));
+}
+
+.detailTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.detailText {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.625;
+}
+
+/* Lists */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.listItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.listArrow {
+  color: hsl(var(--primary));
+  margin-top: 0.25rem;
+}
+
+.listCheck {
+  color: hsl(var(--accent));
+  margin-top: 0.25rem;
+}
+
+/* Tech Stack */
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.techBadge {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-family: monospace;
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--primary) / 0.2);
+  transition: background 0.3s ease;
+}
+
+.techBadge:hover {
+  background: hsl(var(--primary) / 0.2);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.expandButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(var(--border));
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.expandButton:hover {
+  border-color: hsl(var(--primary));
+  color: hsl(var(--primary));
+}
+
+.expandIcon {
+  transition: transform 0.3s ease;
+}
+
+.expandButton:hover .expandIcon {
+  transform: rotate(12deg);
+}
+
+.githubButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.githubButton:hover {
+  background: hsl(var(--primary) / 0.9);
+}
+
+.buttonIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Decorative Bottom Line */
+.decorativeLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.card:hover .decorativeLine {
+  opacity: 1;
+}

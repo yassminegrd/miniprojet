@@ -1,0 +1,22 @@
+.typewriter {
+  display: inline;
+}
+
+.cursor {
+  color: hsl(45, 93%, 47%);
+  font-weight: 100;
+  margin-left: 2px;
+}
+
+.cursorBlink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}

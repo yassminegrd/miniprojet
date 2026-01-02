@@ -1,0 +1,70 @@
+/* Scroll Progress Styles */
+
+/* Top Progress Bar */
+.topBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: hsl(var(--background) / 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 50;
+}
+
+.topBarFill {
+  height: 100%;
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
+  transition: width 0.15s ease-out;
+}
+
+/* Side Progress Indicator */
+.sideIndicator {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.5s ease;
+}
+
+@media (min-width: 1024px) {
+  .sideIndicator {
+    display: flex;
+  }
+}
+
+.sideIndicator.hidden {
+  opacity: 0;
+  transform: translateY(-50%) translateX(1rem);
+}
+
+.sideIndicator.visible {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.sideBar {
+  width: 4px;
+  height: 8rem;
+  background: hsl(var(--border));
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.sideBarFill {
+  width: 100%;
+  background: linear-gradient(to bottom, hsl(var(--primary)), hsl(var(--accent)));
+  border-radius: 9999px;
+  transition: height 0.15s ease-out;
+}
+
+.percentText {
+  font-size: 0.75rem;
+  font-family: monospace;
+  color: hsl(var(--muted-foreground));
+}
